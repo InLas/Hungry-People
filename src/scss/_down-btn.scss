@@ -1,0 +1,104 @@
+.down-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 586px;
+  left: 50%;
+
+  transform: translate(-50%, 0);
+
+  width: 40px;
+  height: 40px;
+
+  background-color: #fff;
+  border-radius: 50%;
+  transition: background-color 0.3s ease 0s;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $yellowColor;
+
+      & .down-btn__rings {
+        border: 1px solid rgba($color: $yellowColor, $alpha: 1);
+      }
+    }
+  }
+
+  &:focus {
+    background-color: $yellowColor;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  &::after {
+    content: '';
+  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  
+    transform: translate(-50%, -50%);
+
+    width: 60px;
+    height: 60px;
+
+    background: transparent;
+    border: 1px solid rgba($color: #fff, $alpha: 0.2);
+    border-radius: 50%
+  }
+
+  @extend ._icon-arrow;
+  &::before {
+    @extend %ic;
+    font-size: 15px;
+
+    color: #333333;
+    transition: transform 0.3s ease 0s;
+    animation: down 1s infinite alternate;
+  }
+
+  &__rings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    width: auto;
+    height: auto;
+
+    border: 1px solid rgba($color: #fff, $alpha: 1);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+
+    &:last-child {
+      animation: pulse 2s infinite 0.5s;
+    }
+  }
+
+  @media (min-width: $tablet-width) {
+    top: 667px;
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+ 
+  to {
+    opacity: 0;
+    transform: scale(1.5, 1.5);
+  }
+}
+
+@keyframes down {
+  from {
+    transform: translate(0, 20%);
+  }
+}

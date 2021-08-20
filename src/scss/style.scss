@@ -1,0 +1,96 @@
+@mixin font($font_name, $file_name, $weight, $style) {
+
+  @font-face {
+  font-family: $font_name;
+  font-display: swap;
+  src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+  font-weight: #{$weight};
+  font-style: #{$style};
+  }
+}
+
+// Шрифты =================
+$fontfamily: "Open Sans";
+$fontsize: 12px;
+$lineheight: 18px;
+$fontweight: 700;
+// Шрифты =================
+
+// Переменные =============
+$mainColor: #000000;
+$bgColor: #ffffff;
+$yellowColor: #E8C300;
+$containerPadding: 0 15px;
+// Переменные =============
+
+// Адаптивное свойство =============
+$maxWidth: 1440;
+$maxWidthContainer: 1310;
+
+@mixin adaptiv-value($propepty, $startSize, $minSize, $type) {
+  $addSize: $startSize - $minSize;
+  @if $type==1 {
+    #{$propepty}: $startSize + px;
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$propepty}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+    }
+  } @else if $type==2 {
+    #{$propepty}: $startSize + px;
+    @media (min-width: #{$maxWidthContainer + px}) {
+      #{$propepty}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+    }
+  } @else {
+    #{$propepty}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+  }
+}
+// Адаптивное свойство =============
+
+@import 'global/fonts.scss';
+
+@import 'global/variables.scss';
+
+@import 'global/global.scss';
+
+@import 'global/icons.scss';
+
+@import '_page.scss';
+
+@import '_page-header.scss';
+
+@import '_controls.scss';
+
+@import '_main-nav.scss';
+
+@import '_intro.scss';
+
+@import '_social-intro.scss';
+
+@import '_down-btn.scss';
+
+@import '_about-us.scss';
+
+@import '_team.scss';
+
+@import '_book-a-table.scss';
+
+@import '_form.scss';
+
+@import '_specialties.scss';
+
+@import '_slider-specialties.scss';
+
+@import '_menu.scss';
+
+@import '_controls-menu.scss';
+
+@import '_dish-menu.scss';
+
+@import '_events.scss';
+
+@import '_gallery.scss';
+
+@import '_contact.scss';
+
+@import '_map.scss';
+
+@import '_page-footer.scss';

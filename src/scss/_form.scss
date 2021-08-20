@@ -1,0 +1,233 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 -10px;
+
+  &__input {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    font-size: 14px;
+    line-height: normal;
+    font-weight: 400;
+
+    box-sizing: border-box;
+
+    width: 277px;
+
+    margin: 0 5px;
+    margin-bottom: 10px;
+    padding: 21.5px 20px;
+
+    color: rgba($color: #333333, $alpha: 0.5);
+    background-color: #E5E5E5;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease 0s;
+
+    appearance: none;
+
+    @extend ._icon-arrow;
+    &::before {
+      @extend %ic;
+      font-size: 14px;
+  
+      transition: transform 0.3s ease 0s;
+    }
+
+    &::placeholder {
+      font-family: "OpenSans";
+      font-size: 14px;
+      line-height: normal;
+
+      color: rgba($color: #333333, $alpha: 0.5);
+    }
+
+    &:focus {
+      border: 1px solid $yellowColor;
+    }
+
+    &--active {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+
+      &._icon-arrow::before {
+        transform: rotate(180deg);
+      }
+    }
+
+    &--textarea {
+      width: 100%;
+
+      resize: none;
+    }
+  }
+
+  &__drop {
+    display: none;
+    list-style: none;
+
+    position: absolute;
+
+    margin: -10px 5px;
+    padding: 0;
+
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    transition: all 0.3s ease 0s;
+
+    &--active {
+      display: block;
+
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+  }
+
+  &__select {
+    display: block;
+
+    font-size: 14px;
+    line-height: normal;
+    font-weight: 400;
+
+    box-sizing: border-box;
+
+    width: 275px;
+
+    padding: 10px 20px;
+
+    color: rgba($color: #333333, $alpha: 0.5);
+    background-color: #E5E5E5;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $yellowColor;
+      }
+    }
+  }
+
+  &__btn {
+    font: inherit;
+    box-sizing: border-box;
+    line-height: 20px;
+    text-transform: uppercase;
+
+    width: 277px;
+    min-width: 277px;
+
+    margin: 0 5px;
+    padding: 20px 0;
+
+    color: #fff;
+    background-color: $yellowColor;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+
+    @media (min-width: $tablet-width) {
+      width: 100%;
+    }
+  }
+
+  &__contacts {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 5px;
+
+    @media (min-width: $desktop-width) {
+      flex-basis: calc(50% - 10px);
+      flex-direction: row;
+      justify-content: space-between;
+
+      order: 1;
+    }
+  }
+
+  &__contact-info {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    color: rgba($color: #333333, $alpha: 0.5);
+
+    &:last-child {
+      margin: 0;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    &:focus {
+      opacity: 0.5;
+    }
+
+    @media (min-width: $tablet-width) {
+      margin: 0;
+    }
+
+    &--adress {
+      @media (any-hover: hover) {
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      &:focus::before {
+        opacity: 1;
+      }
+
+      @extend ._icon-marker;
+      &::before {
+        @extend %ic;
+        font-size: 15px;
+  
+        margin-right: 10px;
+
+        color: $yellowColor;
+      }
+    }
+
+    &--tel {
+      @extend ._icon-phone;
+      &::before {
+        @extend %ic;
+        font-size: 15px;
+  
+        margin-right: 10px;
+
+        transform: rotate(265deg);
+        color: $yellowColor;
+      }
+    }
+
+    &--mail {
+      @extend ._icon-mail;
+      &::before {
+        @extend %ic;
+        font-size: 15px;
+  
+        margin-right: 10px;
+
+        color: $yellowColor;
+      }
+    }
+  }
+}

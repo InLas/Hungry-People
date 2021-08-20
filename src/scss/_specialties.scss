@@ -1,0 +1,25 @@
+.specialties {
+  margin-bottom: 100px;
+  
+  background: 
+  no-repeat center url(../img/specialties/specialties-bg.jpg),
+  #000000;
+
+  @media (min-width: $desktop-width) {
+    background: 
+    no-repeat center fixed url(../img/specialties/specialties-bg.jpg),
+    #000000;
+  }
+
+  &__container {
+    text-align: center;
+
+    padding: 45px 15px 100px;
+
+    color: #fff;
+  }
+
+  &__heading {
+    margin-bottom: 40px;
+  }
+}

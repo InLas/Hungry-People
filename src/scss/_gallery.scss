@@ -1,0 +1,29 @@
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  margin-bottom: 100px;
+
+  &__box {
+    overflow: hidden;
+
+    @media (min-width: $tablet-width) {
+      flex-basis: 50%;
+    }
+
+    @media (min-width: $desktop-width) {
+      flex-basis: 25%;
+    }
+  }
+
+  &__image {
+    transition: all 1s ease 0s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

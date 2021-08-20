@@ -1,0 +1,158 @@
+.main-nav {
+  text-align: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  box-sizing: border-box;
+
+  overflow: auto;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 175px 20px 20px;
+
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  transition: left 0.5s ease 0s;
+
+  z-index: 3;
+
+  &::before {
+    content: "";
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100px;
+
+    background-color: transparent;
+    z-index: 4;
+    transition: background 1s ease 0s;
+  }
+
+  @media (min-width: $tablet-width) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: static;
+
+    overflow: visible;
+
+    padding: 0;
+
+    background-color: transparent;
+
+    // z-index: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &--scroll {
+    &::before {
+      content: "";
+  
+      position: fixed;
+      top: 0;
+      left: 0;
+  
+      width: 100%;
+      height: 100px;
+  
+      background-color: rgba($color: #000000, $alpha: 0.8);
+  
+      z-index: 4;
+    }
+  }
+
+  &--closed {
+    left: -100%;
+    pointer-events: none;
+
+    @media (min-width: $tablet-width) {
+      pointer-events: all;
+    }
+  }
+
+  &--no-js {
+    display: block;
+
+    position: static;
+
+    height: auto;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    list-style: none;
+
+    width: 100%;
+
+    margin: 0;
+    margin-bottom: 40px;
+    padding: 0;
+
+    @media (min-width: $tablet-width) {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      margin: 0;
+    }
+  }
+
+  &__item {
+    @media (min-width: $tablet-width) {
+      flex-basis: 133/1310 * 100%;
+
+      margin: 0;
+      padding: 5px 0;
+    }
+
+    &--left {
+      @media (min-width: $tablet-width) {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+
+    font-size: 24px;
+    text-transform: uppercase;
+
+    padding: 20px;
+
+    color: #ffffff;
+    transition: 0.3s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: $yellowColor;
+      }
+    }
+
+    &:focus {
+      color: $yellowColor;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+
+    @media (min-width: $tablet-width) {
+      font-size: 12px;
+
+      padding: 0;
+    }
+  }
+}

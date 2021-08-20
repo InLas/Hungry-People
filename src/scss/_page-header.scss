@@ -1,0 +1,32 @@
+.page-header {
+  align-self: flex-start;
+
+  transition: background 1s ease 0s;
+
+  &--scroll {
+    background: rgba($color: #000000, $alpha: 0.8);
+  }
+
+  @media (min-width: $tablet-width) {
+    align-self: center;
+
+    position: fixed;
+
+    width: 100%;
+    max-width: $maxWidth + px;
+
+    z-index: 6;
+  }
+
+  &__container {
+    padding: 0;
+
+    @media (min-width: $tablet-width) {
+      display: flex;
+      align-items: center;
+
+      max-width: 1240px;
+      min-height: 100px;
+    }
+  }
+}
