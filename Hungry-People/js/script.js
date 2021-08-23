@@ -4,7 +4,6 @@
 ;
 const mainNav = document.querySelector('.main-nav');
 const navToogle = document.querySelector('.controls__toogle');
-const mainNavLinks = document.querySelectorAll('.main-nav__link');
 const pageHeader = document.querySelector('.page-header');
 const logo = document.querySelector('.controls__logo');
 const controls = document.querySelector('.controls');
@@ -19,11 +18,15 @@ if (mainNav) {
     mainNav.classList.toggle('main-nav--closed');
   });
 
-  mainNavLinks.forEach(mainNavLink => {
-    mainNavLink.addEventListener('click', (evt) => {
-      evt.preventDefault();
+  pageHeader.querySelectorAll('a[href^="#"').forEach(link => {
 
-      let href = mainNavLink.getAttribute('href').substring(1);
+    link.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      link.blur();
+      navToogle.classList.remove('controls__toogle--open');
+      mainNav.classList.add('main-nav--closed');
+
+      let href = link.getAttribute('href').substring(1);
       const scrollTarget = document.getElementById(href);
       let topOffset = '';
 
@@ -35,11 +38,6 @@ if (mainNav) {
 
       const elementPosition = scrollTarget.getBoundingClientRect().top;
       const offsetPosition = elementPosition - topOffset;
-
-      mainNavLink.blur();
-
-      navToogle.classList.remove('controls__toogle--open');
-      mainNav.classList.add('main-nav--closed');
 
       window.scrollBy({
         top: offsetPosition,
@@ -62,27 +60,34 @@ if (mainNav) {
 };
 const intro = document.querySelector('.intro');
 
-intro.querySelectorAll('a[href^="#"').forEach(link => {
+if (intro) {
+  intro.querySelectorAll('a[href^="#"').forEach(link => {
 
-  link.addEventListener('click', function (evt) {
-    evt.preventDefault();
-    link.blur();
+    link.addEventListener('click', function (evt) {
+      evt.preventDefault();
+      link.blur();
 
-    let href = this.getAttribute('href').substring(1);
+      let href = this.getAttribute('href').substring(1);
 
-    const scrollTarget = document.getElementById(href);
+      const scrollTarget = document.getElementById(href);
+      let topOffset = '';
 
-    const topOffset = pageHeader.offsetHeight;
-    const elementPosition = scrollTarget.getBoundingClientRect().top;
-    const offsetPosition = elementPosition - topOffset;
+      if (pageHeader.offsetHeight < 100) {
+        topOffset = controls.offsetHeight;
+      } else {
+        topOffset = pageHeader.offsetHeight;
+      }
 
-    window.scrollBy({
-      top: offsetPosition,
-      behavior: 'smooth'
+      const elementPosition = scrollTarget.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - topOffset;
+
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     });
   });
-});
-;
+};
 const formSelectors = document.querySelectorAll('.form__selector');
 
 if (formSelectors) {
